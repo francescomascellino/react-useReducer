@@ -301,3 +301,81 @@ useEffect(() => {
 []
 );
 ```
+
+## useReducer basics
+
+### Import useReducer
+```js
+import { useState, useReducer } from "react";
+```
+
+### Declare:
+### - *state* (formData)
+### - *dispatch function* (dispatchFormData) 
+### - *reducer function* (formReducer)
+```js
+const [formData, dispatchFormData] = useReducer(
+    // REDUCER FUNCTION NAME
+    formReducer,
+    // INITIAL STATE (name: <-FIELD '' <-VALUE)
+    { name: '', email: '' });
+```
+
+### Create a form to test the Reducer
+```js
+<input
+    type="text"
+    name="name"
+    id="name"
+    className="form-control"
+    placeholder="Rick Sanchez"
+    aria-describedby="helpId"
+    value={formData.name}
+    onChange={(e) => handleFieldChange('name', e.target.value)}
+/>
+```
+
+```js
+<button className="btn btn-dark" onClick={resetForm}>Reset Form</button>
+```
+
+### Handle the field change/Form Reset using the dispatch function
+```js
+function handleFieldChange(field, value) {
+    dispatchFormData({
+
+        // REDUCER ACTION TYPE NAME
+        type: "CHANGE_FIELD",
+
+        // STATE PARAMETERS TO HANDLE
+        field, value
+
+        })
+};
+```
+
+```js
+function resetForm(e) {
+    e.preventDefault();
+    dispatchFormData({ type: 'RESET_FORM' })
+};
+```
+
+### Use the reducer function to handle the actions dispatched
+```js
+// REDUCER FUNCTION
+function formReducer(state, action) {
+    switch (action.type) {
+        case "CHANGE_FIELD":
+            // CHANGE RETURNS A STATE WITH THE FIELD VALUES
+            return { ...state, [action.field]: action.value };
+
+        case "RESET_FORM":
+            // RESET RETURNS A STATE WITH EMPTY VALUES
+            return { name: '', email: '' }
+
+        default:
+            return state;
+    };
+};
+```
