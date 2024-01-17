@@ -14,12 +14,12 @@ function UserForm({
     function formReducer(state, action) {
         switch (action.type) {
             case "CHANGE_FIELD":
-                // CHANGE RETURNS A STATE WITH THE FIELD VALUES
+                // CHANGE RETURNS A STATE WITH THE FORM FIELD VALUES
                 return { ...state, [action.field]: action.value };
 
             case "RESET_FORM":
                 // RESET RETURNS A STATE WITH EMPTY VALUES
-                return { name: '', email: '' }
+                return { name: '', email: '' };
 
             default:
                 return state;
@@ -40,7 +40,7 @@ function UserForm({
 
     function resetForm(e) {
         e.preventDefault();
-        dispatchFormData({ type: 'RESET_FORM' })
+        dispatchFormData({ type: 'RESET_FORM' });
     };
 
     function logForm(e) {
