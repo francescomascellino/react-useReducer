@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 
-import './App.css'
+import './App.scss'
 
 import UserForm from './assets/components/UserForm'
 
 function App() {
-    const [count, setCount] = useState(0)
+
+    const [count, setCount] = useState(0);
 
     // DEFINE THE DATA STATE
     const [data, setData] = useState([]);
@@ -41,7 +42,7 @@ function App() {
             <div className="container mb-3">
                 <div className="row">
                     <div className="col">
-                        <button onClick={() => setCount((count) => count + 1)}>
+                        <button onClick={() => CountContext.setCount((count) => count + 1)}>
                             count is {count}
                         </button>
                     </div>

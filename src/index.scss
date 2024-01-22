@@ -4,7 +4,6 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif !important;
     line-height: 1.5 !important;
     font-weight: 400 !important;
-
     color-scheme: light dark !important;
     color: rgba(255, 255, 255, 0.87) !important;
     background-color: #242424 !important;
@@ -13,6 +12,10 @@
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
+}
+
+body {
+    background-color: #242424 !important;
 }
 
 a {
